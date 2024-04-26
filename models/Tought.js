@@ -2,6 +2,8 @@ const { DataTypes } = require("sequelize");
 
 const db = require("../db/conn");
 
+const User = require("./User");
+
 const Tought = db.define("Tought", {
   title: {
     type: DataTypes.STRING,
@@ -9,5 +11,8 @@ const Tought = db.define("Tought", {
     allowNull: false,
   },
 });
+
+Tought.belongsTo(User);
+User.hasMany(Tought);
 
 module.exports = Tought;
