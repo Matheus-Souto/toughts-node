@@ -10,6 +10,7 @@ const conn = require("./db/conn");
 
 // Models
 const Tought = require("./models/Tought");
+const User = require("./models/User");
 
 // template egine setup
 app.engine("handlebars", exphbs.engine());
