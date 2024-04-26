@@ -8,6 +8,9 @@ const app = express();
 
 const conn = require("./db/conn");
 
+// Models
+const Tought = require("./models/Tought");
+
 // template egine setup
 app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
