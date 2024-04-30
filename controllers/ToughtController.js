@@ -70,4 +70,31 @@ module.exports = class ToughtController {
       console.log(err);
     }
   }
+
+  static async updateTought(req, res) {
+    const id = req.params.id;
+
+    const tought = await Tought.findOne({ raw: true, where: { id: id } });
+
+    res.render("toughts/edit", { tought });
+  }
+
+  static async updateToughtPost(req, res) {
+    const id = req.body.id;
+
+    const tought = {
+      title: req.body.title,
+    };
+
+    try {
+      await Tought.update(tought, { where: { id: id } });
+      req.flash("message", "Pensamento atualizado com sucesso!");
+
+      req.session.save(() => {
+        res.redirect("/toughts/dashboard");
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 };
